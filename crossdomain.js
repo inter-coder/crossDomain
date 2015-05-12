@@ -1,7 +1,7 @@
 function xdomain(par){//crossdomain function
 	 par.xpath=par.xpath==undefined?"*":par.xpath;
 	 par.type=par.type==undefined?"xml":par.type;
-	 xmlhttp=new XMLHttpRequest();
+	 var xmlhttp=new XMLHttpRequest();
 	 par.url = 'http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent('select * from html WHERE url="'+par.url+'" AND xpath="'+par.xpath+'"')+'&format='+par.type+'&callback=cb';
 	 xmlhttp.open("GET",par.url,false);
 	 xmlhttp.onload=function(){
