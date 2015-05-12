@@ -10,15 +10,3 @@ function xdomain(par){//crossdomain function
 	 };
 	 xmlhttp.send();
 };
-xdomain({
-	url:"http://cropdanka.com/",// url of site
-	type:"xml",//return in xml or JSON format
-	xpath:"*",//filter objects
-	callBack:function(data){
-		console.log(data);// display object returned from request
-		var domElement=document.createElement("div");//create DOM
-		domElement.innerHTML=data.results[0];// load result
-		var options=domElement.querySelectorAll("option");//now we can make javascript selector
-		for(var i in options)console.log(options[i].innerHTML);// and display results
-	}
-});

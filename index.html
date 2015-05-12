@@ -3,6 +3,31 @@
 		<head>CrossDomain</head>
 	</head>
 	<body>
+		<div>
+			<h1>The list of filters for image manipulation on the site</h1>
+			<div id="result" style="background:silver;width:90%;height:100px;margin:10px 5%;padding:10px;"></div>
+		</div>
 		<script src="crossdomain.js"></script>
+		<script>
+			xdomain({
+				url:"http://cropdanka.com/",// url of site
+				type:"xml",//return in xml or JSON format
+				xpath:"*",//filter objects
+				callBack:function(data){
+					console.log(data);// display object returned from request
+					var domElement=document.createElement("div");//create DOM
+					domElement.innerHTML=data.results[0];// load result
+					var options=domElement.querySelectorAll("option");//now we can make javascript selector
+					var result=document.getElementById("result");
+					for(var i in options){// and display results
+						var span=document.createElement('span');
+						span.innerHTML=options[i].innerHTML;
+						span.setAttribute("style","float:left;margin:10px;");
+						result.appendChild(span);
+						console.log(options[i].innerHTML);
+					}
+				}
+			});
+		</script>
 	</body>
 </html>
